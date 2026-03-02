@@ -55,15 +55,17 @@ export const flyAndScale = (
 	};
 };
 export function getDownloadUrl({
-	collectionId,
-	recordId,
-	filename
+    collectionId,
+    recordId,
+    filename
 }: {
-	collectionId: string;
-	recordId: string;
-	filename: string;
+    collectionId: string;
+    recordId: string;
+    filename: string;
 }) {
-	return `http://127.0.0.1:8090/api/files/${collectionId}/${recordId}/${filename}`;
+    // Falls back to localhost if the variable isn't set in Coolify
+    const pbUrl = env.PUBLIC_POCKETBASE_URL || 'http://127.0.0.1:8090';
+    return `${pbUrl}/api/files/${collectionId}/${recordId}/${filename}`;
 }
 export function formatCurrency(num: number) {
 	if (isNaN(num)) {
