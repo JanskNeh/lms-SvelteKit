@@ -38,7 +38,7 @@ export async function handle({ event, resolve }) {
     const response = await resolve(event);
 
     // send back the default 'pb_auth' cookie
-    response.headers.append('set-cookie', locals.pb.authStore.exportToCookie({secure: false});
+    response.headers.append('set-cookie', locals.pb.authStore.exportToCookie({ secure: false }));
 
     return response;
 }
