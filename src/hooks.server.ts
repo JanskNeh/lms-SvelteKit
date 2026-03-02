@@ -8,7 +8,7 @@ export async function handle({ event, resolve }) {
     const { url, locals, request } = event;
 
     // Use the POCKETBASE_URL from Coolify, fallback to local for dev
-    const pbUrl = env.POCKETBASE_URL || 'http://127.0.0.1:8090';
+    const pbUrl = process.env.POCKETBASE_URL || 'http://127.0.0.1:8090';
     locals.pb = new PocketBase(pbUrl);
 
     // load the store data from the request cookie string
